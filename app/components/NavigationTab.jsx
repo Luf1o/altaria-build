@@ -1,14 +1,24 @@
+// Redundant    : yes
 'use client'
 import { Navlinks } from "@/constants";
 import Image from "next/image";
-import { useState } from "react";
+import { useState,useContext,createContext } from "react";
+
+
+const TabContext = createContext()
+export function useTab(){
+    return useContext(TabContext)   
+}
+
 
 export default function NavigationTab() {
     const [selectedTab,setSelectedTab] = useState('home');
+
+
     function setActiveTab(tabName){
         if(selectedTab !== tabName)
             setSelectedTab(tabName)     
-        console.log('active tab :',tabName)  
+        console.log('Navigation Tab :',tabName)  
     }
     return(
         <div className="w-full flex flex-col h-full">

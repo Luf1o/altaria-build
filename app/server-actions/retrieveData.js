@@ -5,8 +5,10 @@ export default async function retrieveData(req, res) {
         const {data,error} = await supabase
         .from('mits_events')
         .select('event_name')
+        console.log(data)   
+        if(error)
+            throw error
     }catch(error){ 
-        console.log(error)
+        console.error(error)
     }
-
 }

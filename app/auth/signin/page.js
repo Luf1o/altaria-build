@@ -1,16 +1,17 @@
-//hardcoded-credentials Embedding credentials in source code risks unauthorized access to your Supabase project. Consider using environment variables or secrets management to protect your credentials.
+'use client'
 
-import { createClient } from "@/utils/supabase/client";
+export default  function SignIn(){
+    
+   
 
-export default async function signIn(formData){
-    const supabase = createClient();
-    try{
-        const {users, error} = await supabase.auth.signIn({
-            email: formData.email,
-            password: formData.password
-        });
-        console.error('error signing in',error);    
-    }catch(error){
-        console.log('error signing in',error);
-    }
+    return(
+        <div className="w-1/2 py-4 rounded-lg bg-blue-400 flex items-center flex-col justify-center">
+            <form action="/dashboard" onSubmit={SignIn} >
+                <input type="text" placeholder="Email" className="p-2 m-2 rounded-md" />
+                <input type="password" placeholder="Password" className="p-2 m-2 rounded-md" />
+                <button className="p-2 m-2 bg-blue-500 rounded-lg">Sign In</button>
+            </form>
+            <button className="p-2 m-2 bg-blue-500 rounded-lg" onClick={retrieveData}>Retrieve DB</button>
+        </div>
+    )
 }

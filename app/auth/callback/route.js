@@ -1,15 +1,17 @@
-import { createClient } from "@/utils/supabase/client";
+import { createRouteHandlerClient } from "@supabase/auth-helpers-nextjs";
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
-export default async function GET(req){
-    const requestUrl = new URL(req.url);
-    const code = requestUrl.searchParams.get('code');
-    const origin = requestUrl.origin;
+export async function GET (req){
+    const cookieStore = cookies();
+    const supabase = createRouteHandlerClient({cookies : ()=> cookieStore});
+    const {searchParams} = new URL(req.url);
+    const code = searchParams.get('code');
 
     if(code){
-        const supabase = createClient();
-        await supabase.auth.exchangeSessionRefreshToken(code);
+        await supabase.auth.exchangeCodeForSession(code);
+        console.log("code exchanged")
     }
-    //return NextResponse.redirect(`${origin}/waiting`)
-    return NextResponse.redirect('/waiting')
+    console.log('redirected to watch-list');
+    return NextResponse.redirect(new URL('/dashboard', req.url));  
 }

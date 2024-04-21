@@ -1,7 +1,8 @@
 'use client'
-import React,{ useState } from "react";
+import React,{ useState,useEffect } from "react";
+import EventDetails from "../components/EventDetails";
 
-export default function HeroSection(){
+export default function HeroSection(activeTab){
     const [searchParams,setSearchParams] = useState('');
     const handleChanges = (e) => { 
         e.preventDefault();
@@ -13,9 +14,53 @@ export default function HeroSection(){
         console.log('Search for -'+searchParams)
         
     }
+
+    //const [selectedTab,setSelectedTab] = useState('profile');
+    const SetHeroSection = ({switchHero}) =>{
+        useEffect(()=>{
+            console.log('heroSection Switch Hero :',switchHero.activeTab)
+        },[switchHero])
+        switch(switchHero.activeTab){
+            case 'home' || 'Home':
+                return(
+                    <div >
+                       <h1>Home Section</h1>
+                    </div>
+                )
+                case 'users' || 'Users':
+                    return(
+                        <div>
+                            Users Section
+                        </div>
+                    )
+                case 'events' || 'Events':
+                    return(
+                        <div className="w-full h-full">
+                            <EventDetails />
+                        </div>
+                    )
+                case 'profile' || 'Profile':   
+                    return(
+                        <div>
+                            Profile Section
+                        </div>
+                    )
+                case 'inventory' || 'Inventory':
+                    return(
+                        <div>
+                            Inventory Section
+                        </div>
+                    )
+            default: 
+                return(
+                    
+                    <div>Nothing</div>
+                )
+        }
+    }
     
     return(
-        <div className="w-full flex h-screen overflow-auto">
+        <div className="w-full flex flex-col h-screen overflow-auto">
             <div className="h-24 w-full flex items-center justify-center">
                 <form className="flex w-full justify-center  h-16 gap-3 py-2" onSubmit={searchQuery}>
                     <div className="w-1/2 flex items-center gap-3 justify-center">
@@ -23,6 +68,11 @@ export default function HeroSection(){
                         <button type='submit' className="font-bold bg-white rounded-full text-black px-8 py-3">Submit</button>
                     </div>
                 </form>
+            </div>
+            <div className="w-full h-full   rounded-md border-0">
+                <div className='p-4 w-full h-full flex items-center justify-center  '>
+                   <SetHeroSection switchHero={activeTab} />
+                </div>
             </div>
         </div>
     )
