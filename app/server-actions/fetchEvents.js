@@ -8,7 +8,9 @@ export default async function fetchEvent() {
    try{
     const {data,error} = await supabase 
     .from('mits_event')
-    .select('event_name','event_date','event_desc','event_venue');
+    .select('*');
+
+    //console.log(data,error);
     if(error){
         throw error
     }

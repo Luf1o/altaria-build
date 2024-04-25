@@ -70,11 +70,11 @@ export default function Dashboard() {
       <div className="w-1/6 h-full bg-[#16735C]/[.69]">
         <NavigationPanel />
       </div>
-        <HeroSection activeTab={selectedTab} />
+        <HeroSection activeTab={selectedTab} hideHeroSection={openEventCreate} />
       {openEventCreate &&
-        <div className="absolute w-full h-full bg-black/50 z-40 ">
+        <div className="absolute w-full h-full bg-black/50 z-40 focus-within:backdrop-saturate-50 ">
         <div className="w-full relative h-full items-center justify-center flex">
-            <form action={addEvent} onSubmit={EventHam} className='p-2 max-w-screen-lg flex flex-col justify-center border-2 text-black rounded-xl border-green-500'>
+            <form action={addEvent} onSubmit={EventHam} className='p-2 max-w-screen-lg flex bg-black flex-col justify-center border-2 text-black rounded-xl border-green-500'>
               <div className=" flex items-center justify-center overflow-hidden rounded-lg bg-green-400">
                   <button type='button' onClick={EventHam} className="font-bold w-full  p-2 border-2">Close</button>
               </div>

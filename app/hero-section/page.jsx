@@ -2,7 +2,7 @@
 import React,{ useState,useEffect } from "react";
 import EventDetails from "../components/EventDetails";
 
-export default function HeroSection(activeTab){
+export default function HeroSection(activeTab,hideHeroSection){
     const [searchParams,setSearchParams] = useState('');
     const handleChanges = (e) => { 
         e.preventDefault();
@@ -70,8 +70,8 @@ export default function HeroSection(activeTab){
                 </form>
             </div>
             <div className="w-full h-full   rounded-md border-0">
-                <div className='p-4 w-full h-full flex items-center justify-center  '>
-                   <SetHeroSection switchHero={activeTab} />
+                <div className='p-1 w-full h-full flex items-center justify-center  '>
+                   {hideHeroSection &&<SetHeroSection switchHero={activeTab} />}
                 </div>
             </div>
         </div>
