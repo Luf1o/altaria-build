@@ -1,23 +1,43 @@
 'use client'
-import { createClient } from "@/utils/supabase/client";
-import { useState } from "react";
+import { Auth } from "@supabase/auth-ui-react";
+import { createClientComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export default function AuthForm(){
-    const supabase = createClient();
-    async function handleLogin(formData){
-        console.log('HEHE')
-    }
+    const supabase = createClientComponentClient()
 
     const handleChange = (e)=>{
         e.preventDefault();
         const {name,value} = e.target;
     }
     return(
-        <form className="w-1/3 h-1/3 bg-red-50 roudned-xl" method="post">
-            <input type="email" name="email" value={email} onChange={handleChange} placeholder="Email" className="w-1/2 h-1/2 bg-red-50 rounded-xl"/>
-            <input type="password" name="password" value={password} onChange={handleChange} placeholder="Password" className="w-1/2 h-1/2 bg-red-50 rounded-xl"/>
-            <button type="submit" className="w-1/2 h-1/2 bg-red-50 rounded-xl">Submit</button>
-        </form>
+        <div className="flex w-1/3 h-2/3 items-center justify-center flex-col gap-2">
+            <form className="w-full h-auto flex flex-col items-center justify-center gap-3 roudned-xl " method="post" >
+                <input type="email" name="email"  placeholder="Email" className="w-1/2 h-12  rounded-xl"/>
+                <input type="password" name="password"  placeholder="Password" className="w-1/2  h-12 rounded-xl"/>
+                <button type="submit" className="w-1/2 h-12 bg-red-50 rounded-xl">Submit</button>
+            </form>
+            <div>
+                <p>OR</p>
+            </div>
+            <div className="w-full p-3 text-white border-2 border-green-300 rounded-xl">
+                <Auth 
+                    supabaseClient={supabase}
+                    providers={''}
+                    view="magic_link"
+                    showLinks={false}
+                    redirectTo="/https://localhost:3000/auth/callback"
+                    appearance={{
+                        theme: 'light',
+                        button: {
+                            className: 'bg-white-400 text-gray-900 hover:bg-gray-600'
+                        },
+                        input: {
+                            className: 'bg-gray-700 border-gray-600 text-white'
+                        }
+                    }}
+                />
+            </div>
+        </div>
     )
     
 }

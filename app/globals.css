@@ -21,3 +21,8 @@
     text-wrap: balance;
   }
 }
+.bg-fill-alpha2{
+  background: linear-gradient(30deg,
+    rgba(10,12,15,.89), rgba(10,12,15,1)
+  );
+}

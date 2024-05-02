@@ -1,11 +1,21 @@
-import { NextRequest } from "next/server";
-import { updateSession } from "./utils/supabase/middleware";
-export async function middleware(req) {
+import {createMiddlewareClient} from '@supabase/auth-helpers-nextjs';
+import { NextResponse } from 'next/server';
+
+export async function middleware (req){
+    const res = NextResponse.next();
+    const supabase = createMiddlewareClient({req, res});
     
-    return await updateSession(req);  
+    const {data: {user}} = await supabase.auth.getUser();
+    
+    if(user && req.nextUrl.pathname ==='/'){
+        return NextResponse.redirect(new URL('/dashboard', req.url));
+    }
+    if(!user && req.nextUrl.pathname !=='/'){
+        return NextResponse.redirect(new URL('/', req.url));
+    }
+    return res;
 
 }
-
 export const config ={
-    matcher: ['/','/waiting','/dashboard']
+    matcher : ['/','/dashboard']
 }
