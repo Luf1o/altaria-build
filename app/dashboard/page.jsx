@@ -5,6 +5,7 @@ import { Navlinks } from "@/constants";
 import Image from "next/image";
 import { useState } from "react";
 import addEvent from "../server-actions/addEvent";
+import { signOut } from "../server-actions/signOut";
 
 export default function Dashboard() {
   const [selectedTab, setActiveTab] = useState('Home');
@@ -56,8 +57,11 @@ export default function Dashboard() {
       <div className="w-full h-48">
           <p className="text-transparent">Buffer</p>
       </div>
-      <div className='w-full py-5  bg-black/80  flex items-center justify-center'>
-        <h1 className="font-black">SignOut</h1>
+      <div className='w-full   bg-black/80  flex items-center justify-center'>
+        <button onClick={signOut}
+          className="py-5 text-lg font-bold w-full h-full hover:bg-white hover:text-black transition-colors">
+            signOut
+        </button>
       </div>
   </div>
     )

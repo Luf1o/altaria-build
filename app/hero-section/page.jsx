@@ -1,6 +1,7 @@
 'use client'
 import React,{ useState,useEffect } from "react";
 import EventDetails from "../components/EventDetails";
+import HomeSection from "../components/HomeSection";
 
 export default function HeroSection(activeTab,hideHeroSection){
     const [searchParams,setSearchParams] = useState('');
@@ -23,8 +24,8 @@ export default function HeroSection(activeTab,hideHeroSection){
         switch(switchHero.activeTab){
             case 'home' || 'Home':
                 return(
-                    <div >
-                       <h1>Home Section</h1>
+                    <div className="w-full h-full">
+                        <HomeSection />
                     </div>
                 )
                 case 'users' || 'Users':
