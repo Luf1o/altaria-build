@@ -54,7 +54,7 @@ export default function HeroSection(activeTab,hideHeroSection){
             default: 
                 return(
                     
-                    <div>Nothing</div>
+                    <div className="flex flex-col text-center font-bold text-3xl">Welome to <br></br>MITS EVENT CURATOR Ver 0.4</div>
                 )
         }
     }
