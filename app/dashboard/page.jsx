@@ -3,12 +3,20 @@
 import HeroSection from "../hero-section/page";
 import { Navlinks } from "@/constants";
 import Image from "next/image";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import addEvent from "../server-actions/addEvent";
+import { GetUser } from "../server-actions/getUser";
 
 export default function Dashboard() {
   const [selectedTab, setActiveTab] = useState('Home');
   const [openEventCreate, setOpenEventCreate] = useState(false);
+  const [user, setUser] = useState([]);
+/*useEffect(()=>{
+    GetUser().then((data) => {
+      setUser({data});
+      console.log('dashboard log' ,user)
+    });
+  },[])*/
   function EventHam(){
     setOpenEventCreate(!openEventCreate);
   }
@@ -17,8 +25,8 @@ export default function Dashboard() {
       <div className="w-full flex flex-col justify-between h-full ">
       <div className="bg-[#151313] items-center justify-between px-2 flex py-2 w-full">
           <div className="gap-2">
-              <p className="font-black text-3xl">Username</p>
-              <p>role</p>
+              <p className="font-black text-sm">''</p>
+              <p></p>
           </div>
           <div className="flex items-center justify-between border-3 border-red-300/[.3]">
               <Image 

@@ -20,3 +20,24 @@ export default async function fetchEvent() {
         return;
     }
 }
+export async function getInventory (){
+    const CookieStore = cookies();
+    const supabase = createServerActionClient({ cookies: () => CookieStore });
+    try{
+        const {data,error} = await supabase 
+        .from('inventory')
+        .select('*');
+    
+        //console.log(data,error);
+        if(error){
+            throw error
+        }
+        return data;
+        }catch(error){
+            console.error('Error fetching data',error);
+            return;
+        }
+    return <div>
+        Inventory
+    </div>
+}

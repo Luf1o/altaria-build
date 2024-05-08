@@ -1,6 +1,7 @@
 'use client'
 import React,{ useState,useEffect } from "react";
 import EventDetails from "../components/EventDetails";
+import Inventory from "../components/Inventory";
 
 export default function HeroSection(activeTab,hideHeroSection){
     const [searchParams,setSearchParams] = useState('');
@@ -47,8 +48,8 @@ export default function HeroSection(activeTab,hideHeroSection){
                     )
                 case 'inventory' || 'Inventory':
                     return(
-                        <div>
-                            Inventory Section
+                        <div className="w-full h-full">
+                           <Inventory />
                         </div>
                     )
             default: 

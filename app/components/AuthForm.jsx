@@ -16,10 +16,10 @@ export default function AuthForm(){
                 <input type="password" name="password"  placeholder="Password" className="w-1/2  h-12 rounded-xl"/>
                 <button type="submit" className="w-1/2 h-12 bg-red-50 rounded-xl">Submit</button>
             </form>
-            <div>
+            <div className="text-white mt-5 text-xl">
                 <p>OR</p>
             </div>
-            <div className="w-full p-3 text-white border-2 border-green-300 rounded-xl">
+            <div className="w-4/6  py-3 text-white px-3 border-green-300 rounded-xl">
                 <Auth 
                     supabaseClient={supabase}
                     providers={''}
