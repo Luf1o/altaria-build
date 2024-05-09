@@ -11,12 +11,13 @@ export default function Dashboard() {
   const [selectedTab, setActiveTab] = useState('Home');
   const [openEventCreate, setOpenEventCreate] = useState(false);
   const [user, setUser] = useState([]);
-/*useEffect(()=>{
+useEffect(()=>{
+
     GetUser().then((data) => {
       setUser({data});
       console.log('dashboard log' ,user)
     });
-  },[])*/
+  },[])
   function EventHam(){
     setOpenEventCreate(!openEventCreate);
   }
@@ -25,8 +26,8 @@ export default function Dashboard() {
       <div className="w-full flex flex-col justify-between h-full ">
       <div className="bg-[#151313] items-center justify-between px-2 flex py-2 w-full">
           <div className="gap-2">
-              <p className="font-black text-sm">''</p>
-              <p></p>
+              <p className="font-black text-sm">User</p>
+              <p>Role</p>
           </div>
           <div className="flex items-center justify-between border-3 border-red-300/[.3]">
               <Image 

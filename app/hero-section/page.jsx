@@ -2,6 +2,7 @@
 import React,{ useState,useEffect } from "react";
 import EventDetails from "../components/EventDetails";
 import Inventory from "../components/Inventory";
+import UserPage from "../components/Userpage";
 
 export default function HeroSection(activeTab,hideHeroSection){
     const [searchParams,setSearchParams] = useState('');
@@ -30,8 +31,8 @@ export default function HeroSection(activeTab,hideHeroSection){
                 )
                 case 'users' || 'Users':
                     return(
-                        <div>
-                            Users Section
+                        <div className="w-full h-full">
+                           <UserPage />
                         </div>
                     )
                 case 'events' || 'Events':

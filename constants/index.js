@@ -3,7 +3,7 @@ export const  Navlinks =  [
     { name: 'inventory' , href: '/inventory'},
     { name: 'users',href: '/users'},
     {name: 'events',href: '/events'},
-    {name: 'profile',href: '/profile'  }
+    
 ]
 export const Nav = {
     home: {
