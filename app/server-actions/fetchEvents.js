@@ -40,3 +40,16 @@ export async function getInventory (){
         return;
     }
 }
+export async function getVenue (){
+    try{
+        const {data,error} = await supabase
+        .from('mits_halls')
+        .select('*');
+        
+        console.log(data,error);
+        return data;
+    }catch(error){
+        console.error('Error fetching data',error);
+        return;
+    }
+}

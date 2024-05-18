@@ -8,7 +8,7 @@ export default function UserPage(){
             <h1 className="text-3xl font-bold">Users</h1>  
         </div>
         <div className="w-full">  
-            <ul className="p-4 w-full">
+            <ul className="p-4 w-full flex flex-col gap-2 ">
                 <li className=" py-2 border-3">
                     <div className="flex m-2 justify-evenly">
                         <p className="w-48">Username</p>
@@ -19,9 +19,39 @@ export default function UserPage(){
                 </li>
                 <li className="p-1 flex items-center justify-start py-3 rounded-lg bg-slate-200/25 w-full">
                     <input type='checkbox' className="w-12 mr-[115px]" />
-                    <div className="w-48 border-3 mr-36">Username</div>
+                    <div className="w-48 border-3 mr-36">Jyo</div>
                     <div className="w-28 ml-4 mr-56">Admin</div>
-                    <div className="w-48 ml-8 mr-3">Acess</div>
+                    <div className="w-48 ml-8 mr-3">LEVEL 0</div>
+                    <div className="w-48 flex gap-2 ml-36">
+                        <button className="text-red-500 px-4 py-3 bg-slate-50 rounded-lg">Delete</button>
+                        <button className="text-green-500 px-4 py-3 bg-slate-50 rounded-lg">Edit</button>
+                    </div>
+                </li>
+                <li className="p-1 flex items-center justify-start py-3 rounded-lg bg-slate-200/25 w-full">
+                    <input type='checkbox' className="w-12 mr-[115px]" />
+                    <div className="w-48 border-3 mr-36">Bhavana</div>
+                    <div className="w-28 ml-4 mr-56">Faculty</div>
+                    <div className="w-48 ml-8 mr-3">LEVEL 1</div>
+                    <div className="w-48 flex gap-2 ml-36">
+                        <button className="text-red-500 px-4 py-3 bg-slate-50 rounded-lg">Delete</button>
+                        <button className="text-green-500 px-4 py-3 bg-slate-50 rounded-lg">Edit</button>
+                    </div>
+                </li>
+                <li className="p-1 flex items-center justify-start py-3 rounded-lg bg-slate-200/25 w-full">
+                    <input type='checkbox' className="w-12 mr-[115px]" />
+                    <div className="w-48 border-3 mr-36">Alfons</div>
+                    <div className="w-28 ml-4 mr-56">Rep</div>
+                    <div className="w-48 ml-8 mr-3">LEVEL 2</div>
+                    <div className="w-48 flex gap-2 ml-36">
+                        <button className="text-red-500 px-4 py-3 bg-slate-50 rounded-lg">Delete</button>
+                        <button className="text-green-500 px-4 py-3 bg-slate-50 rounded-lg">Edit</button>
+                    </div>
+                </li>
+                <li className="p-1 flex items-center justify-start py-3 rounded-lg bg-slate-200/25 w-full">
+                    <input type='checkbox' className="w-12 mr-[115px]" />
+                    <div className="w-48 border-3 mr-36">Lena</div>
+                    <div className="w-28 ml-4 mr-56">Rep</div>
+                    <div className="w-48 ml-8 mr-3">LEVEL 2</div>
                     <div className="w-48 flex gap-2 ml-36">
                         <button className="text-red-500 px-4 py-3 bg-slate-50 rounded-lg">Delete</button>
                         <button className="text-green-500 px-4 py-3 bg-slate-50 rounded-lg">Edit</button>

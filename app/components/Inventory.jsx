@@ -46,10 +46,12 @@ export default function Inventory(){
                     {inventory.map((inv)=>(
                         <li key={inv.id}>
                             <div className={`${inv.avail ? 'border-green-500' : 'border-red-500'} py-3 px-3 w-96 flex flex-col gap-2 border-2 rounded-lg`}>
-                                <h1>{inv.eq_name}</h1>
-                                <p>{inv.eq_code}</p>
+                                <div className="flex w-full justify-between">
+                                    <h1 className="font-semibold">{inv.eq_nam}</h1>
+                                    <h1 className="text-white/35">{inv.eq_code}</h1>
+                                </div>
                                 <div className="flex justify-between">
-                                    <p>{inv.event_assigned}</p>
+                                    <p>Assigned :{inv.event_assigned}</p>
                                     <div className="flex gap-2 items-center">
                                         <p>Status</p>
                                         <div className={`${inv.avail? 'bg-green-500' : 'bg-red-500'} w-8 h-8 rounded-full  `}></div>

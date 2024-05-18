@@ -5,19 +5,27 @@ import { Navlinks } from "@/constants";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import addEvent from "../server-actions/addEvent";
-import { GetUser } from "../server-actions/getUser";
+import { GetUser  } from "../server-actions/getUser";
+import { getVenue } from "../server-actions/fetchEvents";
 
 export default function Dashboard() {
   const [selectedTab, setActiveTab] = useState('Home');
-  const [openEventCreate, setOpenEventCreate] = useState(false);
+  const [openEventCreate, setOpenEventCreate] = useState(true);
   const [user, setUser] = useState([]);
+  const [venue, setVenue] = useState([]);
 useEffect(()=>{
 
     GetUser().then((data) => {
       setUser({data});
       console.log('dashboard log' ,user)
     });
-  },[])
+  },[]);
+  function getVenueData(){
+    getVenue().then((data) => {
+      setVenue(data);
+      console.log('Venue Data :',venue);
+    });
+  }
   function EventHam(){
     setOpenEventCreate(!openEventCreate);
   }
@@ -101,11 +109,18 @@ useEffect(()=>{
             <div className="flex">
               <div className="p-2 flex w-[300px] flex-col gap-2">
                 <label htmlFor='event-venue' className="text-white">Event Venue</label>
-                <input type='text' id='event-venue' name='event-venue' />
+                <select name='event-venue' className="py-2" id='event-venue' >
+                  {venue.map((ven) => (
+                    <option key={ven.id} value={ven.venue_name}>{ven.venue_name}</option>
+                  ))}
+                  <option value='Kalam Hall' placeholder='select venue'>Kalam Hall</option>
+                  <option value='CODD BASE' placeholder='select venue'>CODD BASE</option>
+
+                </select>
               </div>
               <div className="p-2 flex w-[300px] flex-col gap-2">
                 <label htmlFor='event-date'>Host</label>
-                <input type='date' id='event-date' name='event-date' />
+                <input type='date' className="py-2" id='event-date' name='event-date' />
               </div>
             </div>
               <div className="mt-2 p-2 items-center flex justify-center w-full ">
@@ -114,6 +129,9 @@ useEffect(()=>{
             <div className="flex w-full gap-3 p-3">
               <button type='submit' className="px-8 py-3 bg-white rounded-full font-semibold">Submit</button>
               <button type='reset' className="px-8 py-3 bg-white rounded-full font-semibold">Reset</button>
+            </div>
+            <div className="flex w-full gap-3 p-3">
+              <button type='button' className="px-8 py-3 bg-white rounded-full font-semibold">Cancel</button>
             </div>
             </form>
         </div>
